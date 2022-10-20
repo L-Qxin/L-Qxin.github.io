@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="css选择器, HTML,CSS,JavaScript,React,Vue.js等">
+    <meta name="keywords" content="盒子模型的理解, HTML,CSS,JavaScript,React,Vue.js等">
     <meta name="description" content="专注于Web,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>css选择器 | LQXin的私人博客</title>
+    <title>盒子模型的理解 | LQXin的私人博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -108,28 +108,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -211,28 +189,6 @@
           
         </li>
         
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
         
     </ul>
 </div>
@@ -249,12 +205,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">css选择器</h1>
+                    <h1 class="description center-align post-title">盒子模型的理解</h1>
                 </div>
             </div>
         </div>
@@ -379,6 +335,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -386,37 +351,32 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-10-19
+                    2018-09-30
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-19
+                    2022-10-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    435
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    1 分
                 </div>
                 
 
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
             </div>
         </div>
         <hr class="clearfix">
@@ -427,202 +387,38 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、选择器"><a href="#一、选择器" class="headerlink" title="一、选择器"></a>一、选择器</h2><p>CSS选择器是CSS规则的第一部分</p>
-<p>它是元素和其他部分组合起来告诉浏览器哪个HTML元素应当是被选为应用规则中的CSS属性值的方式</p>
-<p>选择器所选择的元素，叫做“选择器的对象”</p>
+                <h2 id="一、是什么"><a href="#一、是什么" class="headerlink" title="一、是什么"></a>一、是什么</h2><p>当对一个文档进行布局（layout）的时候，浏览器的渲染引擎会根据标准之一的 CSS 基础框盒模型（CSS basic box model），将所有元素表示为一个个矩形的盒子（box）</p>
+<p>一个盒子由四个部分组成：<code>content</code>、<code>padding</code>、<code>border</code>、<code>margin</code></p>
+<p><img src="https://static.vue-js.com/976789a0-8f9b-11eb-85f6-6fac77c0c9b3.png" alt="img"></p>
+<p><code>content</code>，即实际内容，显示文本和图像</p>
+<p><code>boreder</code>，即边框，围绕元素内容的内边距的一条或多条线，由粗细、样式、颜色三部分组成</p>
+<p><code>padding</code>，即内边距，清除内容周围的区域，内边距是透明的，取值不能为负，受盒子的<code>background</code>属性影响</p>
+<p><code>margin</code>，即外边距，在元素外创建额外的空白，空白通常指不能放其他元素的区域</p>
+<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><p>在<code>CSS</code>中，盒子模型可以分成：</p>
 <ul>
-<li>id选择器（#box），选择id为box的元素</li>
-<li>类选择器（.one），选择类名为one的所有元素</li>
-<li>标签选择器（div），选择标签为div的所有元素</li>
-<li>后代选择器（#box div），选择id为box元素内部所有的div元素</li>
-<li>子选择器（.one&gt;one_1），选择父元素为.one的所有.one_1的元素</li>
-<li>相邻同胞选择器（.one+.two），选择紧接在.one之后的所有.two元素</li>
-<li>群组选择器（div,p），选择div、p的所有元素</li>
-<li>通配选择器（*）</li>
+<li>W3C 标准盒子模型</li>
+<li>IE 怪异盒子模型</li>
 </ul>
-<p>还有一些使用频率相对没那么多的选择器：</p>
+<p>默认情况下，盒子模型为<code>W3C</code> 标准盒子模型</p>
+<h2 id="三、标准盒子模型"><a href="#三、标准盒子模型" class="headerlink" title="三、标准盒子模型"></a>三、标准盒子模型</h2><p>标准盒子模型，是浏览器默认的盒子模型</p>
 <ul>
-<li><p>伪类选择器</p>
-<p>伪类：不存在的类，表示元素的一种状态</p>
-<p>1.常用的伪类</p>
-<pre class=" language-css"><code class="language-css"><span class="token punctuation">:</span>first-child   第一个子元素
-<span class="token punctuation">:</span>last-child    最后一个子元素
-<span class="token punctuation">:</span><span class="token function">nth-child</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   选中第n个元素
-<span class="token punctuation">:</span>focus   选择具有焦点的
-</code></pre>
-<p>关于:nth-child()的特殊值</p>
-<p>​    n   第n个   n的范围0到正无穷（全选）</p>
-<p>​    even或2n    选中偶数位的元素</p>
-<p>​    odd或2n+1   选中奇数位得到元素</p>
-<p>上面的都是在所有元素中选择</p>
-<p>下面都是在相同元素中选择</p>
-<pre class=" language-css"><code class="language-css"><span class="token punctuation">:</span>first-of-type  第一个子元素
-<span class="token punctuation">:</span>last-of-type   最后一个子元素
-<span class="token punctuation">:</span><span class="token function">nth-of-type</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    选中第n个元素
-</code></pre>
-<p>2、否定伪类</p>
-<pre class=" language-css"><code class="language-css"><span class="token punctuation">:</span><span class="token function">not</span><span class="token punctuation">(</span><span class="token punctuation">)</span>        将符号条件的元素去除
-</code></pre>
-<p>3、元素的伪类</p>
-<pre class=" language-css"><code class="language-css"><span class="token punctuation">:</span>link        表示未访问过的a标签
-<span class="token punctuation">:</span>visited    表示访问过的a标签
-</code></pre>
-<p>以上两个伪类是超链接所独有的<br>由于隐私的问题，所以visited这个伪类只能修改链接的颜色</p>
-<p>以下两个伪类是所有标签都可以使用</p>
-<pre class=" language-css"><code class="language-css"><span class="token punctuation">:</span>hover        鼠标移入后元素的状态
-<span class="token punctuation">:</span>active        鼠标点击后，元素的状态 
-</code></pre>
-</li>
+<li>盒子总宽度 = width + padding + border + margin;</li>
+<li>盒子总高度 = height + padding + border + margin</li>
 </ul>
-<ul>
-<li><p>伪元素选择器</p>
-<p>同伪类一样，伪元素也是不存在的元素，表示元素的特殊状态</p>
-</li>
+<p>也就是，<code>width/height</code> 只是内容高度，不包含 <code>padding</code> 和 <code>border</code>值</p>
+<h2 id="四、IE-怪异盒子模型"><a href="#四、IE-怪异盒子模型" class="headerlink" title="四、IE 怪异盒子模型"></a>四、IE 怪异盒子模型</h2><ul>
+<li>盒子总宽度 = width + margin;</li>
+<li>盒子总高度 = height + margin;</li>
 </ul>
-<pre class=" language-css"><code class="language-css"><span class="token punctuation">:</span>first-letter ：用于选取指定选择器的首字母
-<span class="token punctuation">:</span>first-line ：选取指定选择器的首行
-<span class="token punctuation">:</span><span class="token property">before</span> <span class="token punctuation">:</span> 选择器在被选元素的内容前面插入内容
-<span class="token punctuation">:</span><span class="token property">after</span> <span class="token punctuation">:</span> 选择器在被选元素的内容后面插入内容
-<span class="token punctuation">:</span><span class="token punctuation">:</span>selection     表示选中的元素
+<p>也就是，<code>width/height</code> 包含了 <code>padding</code>和 <code>border</code>值</p>
+<h2 id="五、Box-sizing"><a href="#五、Box-sizing" class="headerlink" title="五、Box-sizing"></a>五、Box-sizing</h2><p>CSS 中的 box-sizing 属性定义了引擎应该如何计算一个元素的总宽度和总高度</p>
+<p>语法：</p>
+<pre class=" language-css"><code class="language-css"><span class="token property">box-sizing</span><span class="token punctuation">:</span> content-box|border-box|inherit
 </code></pre>
 <ul>
-<li>属性选择器</li>
-</ul>
-<pre class=" language-css"><code class="language-css">[attribute] 选择带有attribute属性的元素
-[attribute=value] 选择所有使用attribute=value的元素
-[attribute~=value] 选择attribute属性包含value的元素
-[attribute|=value]：选择attribute属性以value开头的元素
-[属性]    选中含有指定属性的元素
-[属性=属性值]    选中含有指定属性和指定属性值的元素
-[属性^=属性值]    选中含有指定属性和指定属性值开头的元素
-[属性$=属性值]    选中含有指定属性和指定属性值结尾的元素
-[属性*=属性值]    选中指定属性名和含有指定属性值的元素
-</code></pre>
-<p>在<code>CSS3</code>中新增的选择器有如下：</p>
-<ul>
-<li>层次选择器（p~ul），选择前面有p元素的每个ul元素</li>
-<li>伪类选择器</li>
-</ul>
-<pre class=" language-css"><code class="language-css"><span class="token punctuation">:</span>first-of-type 表示一组同级元素中其类型的第一个元素
-<span class="token punctuation">:</span>last-of-type 表示一组同级元素中其类型的最后一个元素
-<span class="token punctuation">:</span>only-of-type 表示没有同类型兄弟元素的元素
-<span class="token punctuation">:</span>only-child 表示没有任何兄弟的元素
-<span class="token punctuation">:</span><span class="token function">nth-child</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> 根据元素在一组同级中的位置匹配元素
-<span class="token punctuation">:</span><span class="token function">nth-last-of-type</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> 匹配给定类型的元素，基于它们在一组兄弟元素中的位置，从末尾开始计数
-<span class="token punctuation">:</span>last-child 表示一组兄弟元素中的最后一个元素
-<span class="token punctuation">:</span>root 设置HTML文档
-<span class="token punctuation">:</span>empty 指定空的元素
-<span class="token punctuation">:</span>enabled 选择可用元素
-<span class="token punctuation">:</span>disabled 选择被禁用元素
-<span class="token punctuation">:</span>checked 选择选中的元素
-<span class="token punctuation">:</span><span class="token function">not</span><span class="token punctuation">(</span>selector<span class="token punctuation">)</span> 选择与 &lt;selector> 不匹配的所有元素
-</code></pre>
-<ul>
-<li>属性选择器</li>
-</ul>
-<pre class=" language-css"><code class="language-css">[attribute*=value]：选择attribute属性值包含value的所有元素
-[attribute^=value]：选择attribute属性开头为value的所有元素
-[attribute$=value]：选择attribute属性结尾为value的所有元素
-</code></pre>
-<h2 id="二、优先级"><a href="#二、优先级" class="headerlink" title="二、优先级"></a>二、优先级</h2><p>相信大家对<code>CSS</code>选择器的优先级都不陌生：</p>
-<blockquote>
-<p>！important&gt;内联选择器&gt;ID选择器&gt;类别选择器&gt;属性选择器&gt;伪类&gt;元素选择器&gt;通配符选择器&gt;继承选择器 </p>
-</blockquote>
-<p>1.！important     优先级10000<br>2.内联选择器      优先级1000<br>3.ID选择器        优先级100<br>4.类别选择器      优先级10<br>5.属性选择器      优先级10<br>6.伪类            优先级10<br>7.元素选择器      优先级1<br>8.通配符选择器    优先级0<br>9.继承选择器      没有优先级</p>
-<p>当权值相等时，后定义的样式表要优于先定义的样式表。<br>在同一组属性设置中表有**“!important”**规则的优先级最大。<br>到具体的计算层⾯，优先级是由 A 、B、C、D 的值来决定的，其中它们的值计算规则如下：</p>
-<ul>
-<li>如果存在内联样式，那么 A = 1, 否则 A = 0</li>
-<li>B的值等于 ID选择器出现的次数</li>
-<li>C的值等于 类选择器 和 属性选择器 和 伪类 出现的总次数</li>
-<li>D 的值等于 标签选择器 和 伪元素 出现的总次数</li>
-</ul>
-<p>这里举个例子：</p>
-<pre class=" language-css"><code class="language-css">#nav-global > ul > li > a<span class="token number">.</span>nav-link
-</code></pre>
-<p>套用上面的算法，依次求出 <code>A</code> <code>B</code> <code>C</code> <code>D</code> 的值：</p>
-<ul>
-<li>因为没有内联样式 ，所以 A = 0</li>
-<li>ID选择器总共出现了1次， B = 1</li>
-<li>类选择器出现了1次， 属性选择器出现了0次，伪类选择器出现0次，所以 C = (1 + 0 + 0) = 1</li>
-<li>标签选择器出现了3次， 伪元素出现了0次，所以 D = (3 + 0) = 3</li>
-</ul>
-<p>上面算出的<code>A</code> 、 <code>B</code>、<code>C</code>、<code>D</code> 可以简记作：<code>(0, 1, 1, 3)</code></p>
-<p>知道了优先级是如何计算之后，就来看看比较规则：</p>
-<ul>
-<li>从左往右依次进行比较 ，较大者优先级更高</li>
-<li>如果相等，则继续往右移动一位进行比较</li>
-<li>如果4位全部相等，则后面的会覆盖前面的</li>
-</ul>
-<p>经过上面的优先级计算规则，我们知道内联样式的优先级最高，如果外部样式需要覆盖内联样式，就需要使用<code>!important</code></p>
-<h2 id="三、继承属性"><a href="#三、继承属性" class="headerlink" title="三、继承属性"></a>三、继承属性</h2><p>在<code>css</code>中，继承是指的是给父元素设置一些属性，后代元素会自动拥有这些属性</p>
-<p>关于继承属性，可以分成：</p>
-<ul>
-<li>字体系列属性</li>
-</ul>
-<pre class=" language-css"><code class="language-css"><span class="token property">font</span><span class="token punctuation">:</span>组合字体
-<span class="token property">font-family</span><span class="token punctuation">:</span>规定元素的字体系列
-<span class="token property">font-weight</span><span class="token punctuation">:</span>设置字体的粗细
-<span class="token property">font-size</span><span class="token punctuation">:</span>设置字体的尺寸
-<span class="token property">font-style</span><span class="token punctuation">:</span>定义字体的风格
-<span class="token property">font-variant</span><span class="token punctuation">:</span>偏大或偏小的字体
-</code></pre>
-<ul>
-<li>文本系列属性</li>
-</ul>
-<pre class=" language-css"><code class="language-css">text-indent：文本缩进
-text-align：文本水平对刘
-line-height：行高
-word-spacing：增加或减少单词间的空白
-letter-spacing：增加或减少字符间的空白
-text-transform：控制文本大小写
-direction：规定文本的书写方向
-color：文本颜色
-</code></pre>
-<ul>
-<li>元素可见性</li>
-</ul>
-<pre class=" language-css"><code class="language-css">visibility
-</code></pre>
-<ul>
-<li>表格布局属性</li>
-</ul>
-<pre class=" language-css"><code class="language-css">caption-side：定位表格标题位置
-border-collapse：合并表格边框
-border-spacing：设置相邻单元格的边框间的距离
-empty-cells：单元格的边框的出现与消失
-table-layout：表格的宽度由什么决定
-</code></pre>
-<ul>
-<li>列表属性</li>
-</ul>
-<pre class=" language-css"><code class="language-css">list-style-type：文字前面的小点点样式
-list-style-position：小点点位置
-list-style：以上的属性可通过这属性集合
-</code></pre>
-<ul>
-<li>引用</li>
-</ul>
-<pre class=" language-css"><code class="language-css">quotes：设置嵌套引用的引号类型
-</code></pre>
-<ul>
-<li>光标属性</li>
-</ul>
-<pre class=" language-css"><code class="language-css">cursor：箭头可以变成需要的形状
-</code></pre>
-<p>继承中比较特殊的几点：</p>
-<ul>
-<li>a 标签的字体颜色不能被继承</li>
-<li>h1-h6标签字体的大下也是不能被继承的</li>
-</ul>
-<h2 id="四、无继承的属性"><a href="#四、无继承的属性" class="headerlink" title="四、无继承的属性"></a>四、无继承的属性</h2><ul>
-<li>display</li>
-<li>文本属性：vertical-align、text-decoration</li>
-<li>盒子模型的属性：宽度、高度、内外边距、边框等</li>
-<li>背景属性：背景图片、颜色、位置等</li>
-<li>定位属性：浮动、清除浮动、定位position等</li>
-<li>生成内容属性：content、counter-reset、counter-increment</li>
-<li>轮廓样式属性：outline-style、outline-width、outline-color、outline</li>
-<li>页面样式属性：size、page-break-before、page-break-after</li>
+<li>content-box 默认值，元素的 width/height 不包含padding，border，与标准盒子模型表现一致</li>
+<li>border-box 元素的 width/height 包含 padding，border，与怪异盒子模型表现一致</li>
+<li>inherit 指定 box-sizing 属性的值，应该从父元素继承</li>
 </ul>
 
                 
@@ -650,7 +446,7 @@ list-style：以上的属性可通过这属性集合
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://L-Qxin.github.io/2022/10/19/css-xuan-ze-qi/">http://L-Qxin.github.io/2022/10/19/css-xuan-ze-qi/</a>
+                    <a href="http://L-Qxin.github.io/2018/09/30/css/he-zi-mo-xing-de-li-jie/">http://L-Qxin.github.io/2018/09/30/css/he-zi-mo-xing-de-li-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -819,10 +615,10 @@ list-style：以上的属性可通过这属性集合
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="/medias/reward/zfb.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="/medias/reward/weixin.jpg" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -863,13 +659,13 @@ list-style：以上的属性可通过这属性集合
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/10/19/yuan-su-shui-ping-chui-zhi-ju-zhong-de-fang-fa/">
+                <a href="/2022/09/20/vue/vue3-zu-jian-jian-chuan-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="元素水平垂直居中的方法">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="vue3组件间传值">
                         
-                        <span class="card-title">元素水平垂直居中的方法</span>
+                        <span class="card-title">vue3组件间传值</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -880,12 +676,16 @@ list-style：以上的属性可通过这属性集合
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LQXin
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="post-category">
+                                    前端框架
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -893,8 +693,8 @@ list-style：以上的属性可通过这属性集合
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/css/">
-                        <span class="chip bg-color">css</span>
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
                     </a>
                     
                 </div>
@@ -905,10 +705,10 @@ list-style：以上的属性可通过这属性集合
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2018/09/30/he-zi-mo-xing-de-li-jie/">
+                <a href="/2018/09/30/css/he-zi-mo-xing-de-li-jie/">
                     <div class="card-image">
                         
                         
@@ -929,12 +729,17 @@ list-style：以上的属性可通过这属性集合
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LQXin
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1113,7 +918,7 @@ list-style：以上的属性可通过这属性集合
                    type="playlist"
                    id="503838841"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
                    order='random'
@@ -1142,7 +947,7 @@ list-style：以上的属性可通过这属性集合
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.8k</span>&nbsp;字
+                class="white-color">14k</span>&nbsp;字
             
             
             
@@ -1172,11 +977,11 @@ list-style：以上的属性可通过这属性集合
                     var years = days * 365;
                     var today = new Date();
                     var startYear = "2018";
-                    var startMonth = "6";
-                    var startDate = "28";
-                    var startHour = "0";
-                    var startMinute = "0";
-                    var startSecond = "0";
+                    var startMonth = "7";
+                    var startDate = "19";
+                    var startHour = "17";
+                    var startMinute = "28";
+                    var startSecond = "16";
                     var todayYear = today.getFullYear();
                     var todayMonth = today.getMonth() + 1;
                     var todayDate = today.getDate();
@@ -1210,10 +1015,6 @@ list-style：以上的属性可通过这属性集合
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/L-Qxin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
 
 
     <a href="mailto:liqixin1997@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">

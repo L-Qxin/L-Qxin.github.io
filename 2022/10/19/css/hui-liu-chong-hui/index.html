@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="响应式设计, HTML,CSS,JavaScript,React,Vue.js等">
+    <meta name="keywords" content="回流、重绘, HTML,CSS,JavaScript,React,Vue.js等">
     <meta name="description" content="专注于Web,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>响应式设计 | LQXin的私人博客</title>
+    <title>回流、重绘 | LQXin的私人博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -108,28 +108,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -211,28 +189,6 @@
           
         </li>
         
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
         
     </ul>
 </div>
@@ -249,12 +205,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">响应式设计</h1>
+                    <h1 class="description center-align post-title">回流、重绘</h1>
                 </div>
             </div>
         </div>
@@ -374,14 +330,19 @@
                                 <span class="chip bg-color">css</span>
                             </a>
                         
-                            <a href="/tags/html/">
-                                <span class="chip bg-color">html</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -397,30 +358,25 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-19
+                    2022-10-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
             </div>
         </div>
         <hr class="clearfix">
@@ -431,116 +387,125 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、是什么"><a href="#一、是什么" class="headerlink" title="一、是什么"></a>一、是什么</h2><p>响应式网站设计（Responsive Web design）是一种网络页面设计布局，页面的设计与开发应当根据用户行为以及设备环境(系统平台、屏幕尺寸、屏幕定向等)进行相应的响应和调整</p>
-<p>描述响应式界面最著名的一句话就是“Content is like water”</p>
-<p>大白话便是“如果将屏幕看作容器，那么内容就像水一样”</p>
-<p>响应式网站常见特点：</p>
+                <h2 id="一、是什么"><a href="#一、是什么" class="headerlink" title="一、是什么"></a>一、是什么</h2><p>在<code>HTML</code>中，每个元素都可以理解成一个盒子，在浏览器解析过程中，会涉及到回流与重绘：</p>
 <ul>
-<li>同时适配PC + 平板 + 手机等</li>
-<li>标签导航在接近手持终端设备时改变为经典的抽屉式导航</li>
-<li>网站的布局会根据视口来调整模块的大小和位置</li>
+<li>回流：布局引擎会根据各种样式计算每个盒子在页面上的大小与位置</li>
+<li>重绘：当计算好盒模型的位置、大小及其他属性后，浏览器根据每个盒子特性进行绘制</li>
 </ul>
-<p><img src="https://static.vue-js.com/ae68be30-9dba-11eb-85f6-6fac77c0c9b3.png" alt="img"></p>
-<h2 id="二、实现方式"><a href="#二、实现方式" class="headerlink" title="二、实现方式"></a>二、实现方式</h2><p>响应式设计的基本原理是通过媒体查询检测不同的设备屏幕尺寸做处理，为了处理移动端，页面头部必须有<code>meta</code>声明<code>viewport</code></p>
-<pre class=" language-html"><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no”>
-</code></pre>
-<p>属性对应如下：</p>
+<p>具体的浏览器解析渲染机制如下所示：</p>
+<p><img src="https://static.vue-js.com/2b56a950-9cdc-11eb-ab90-d9ae814b240d.png" alt="img"></p>
 <ul>
-<li>width=device-width: 是自适应手机屏幕的尺寸宽度</li>
-<li>maximum-scale:是缩放比例的最大值</li>
-<li>inital-scale:是缩放的初始化</li>
-<li>user-scalable:是用户的可以缩放的操作</li>
+<li>解析HTML，生成DOM树，解析CSS，生成CSSOM树</li>
+<li>将DOM树和CSSOM树结合，生成渲染树(Render Tree)</li>
+<li>Layout(回流):根据生成的渲染树，进行回流(Layout)，得到节点的几何信息（位置，大小）</li>
+<li>Painting(重绘):根据渲染树以及回流得到的几何信息，得到节点的绝对像素</li>
+<li>Display:将像素发送给GPU，展示在页面上</li>
 </ul>
-<p>实现响应式布局的方式有如下：</p>
+<p>在页面初始渲染阶段，回流不可避免的触发，可以理解成页面一开始是空白的元素，后面添加了新的元素使页面布局发生改变</p>
+<p>当我们对 <code>DOM</code> 的修改引发了 <code>DOM</code>几何尺寸的变化（比如修改元素的宽、高或隐藏元素等）时，浏览器需要重新计算元素的几何属性，然后再将计算的结果绘制出来</p>
+<p>当我们对 <code>DOM</code>的修改导致了样式的变化（<code>color</code>或<code>background-color</code>），却并未影响其几何属性时，浏览器不需重新计算元素的几何属性、直接为该元素绘制新的样式，这里就仅仅触发了重绘</p>
+<h2 id="二、如何触发"><a href="#二、如何触发" class="headerlink" title="二、如何触发"></a>二、如何触发</h2><p>要想减少回流和重绘的次数，首先要了解回流和重绘是如何触发的</p>
+<h3 id="回流触发时机"><a href="#回流触发时机" class="headerlink" title="回流触发时机"></a>回流触发时机</h3><p>回流这一阶段主要是计算节点的位置和几何信息，那么当页面布局和几何信息发生变化的时候，就需要回流，如下面情况：</p>
 <ul>
-<li>媒体查询</li>
-<li>百分比</li>
-<li>vw/vh</li>
-<li>rem</li>
+<li>添加或删除可见的DOM元素</li>
+<li>元素的位置发生变化</li>
+<li>元素的尺寸发生变化（包括外边距、内边框、边框大小、高度和宽度等）</li>
+<li>内容发生变化，比如文本变化或图片被另一个不同尺寸的图片所替代</li>
+<li>页面一开始渲染的时候（这避免不了）</li>
+<li>浏览器的窗口尺寸变化（因为回流是根据视口的大小来计算元素的位置和大小的）</li>
 </ul>
-<h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p><code>CSS3</code>中的增加了更多的媒体查询，就像<code>if</code>条件表达式一样，我们可以设置不同类型的媒体条件，并根据对应的条件，给相应符合条件的媒体调用相对应的样式表</p>
-<p>使用<code>@Media</code>查询，可以针对不同的媒体类型定义不同的样式，如：</p>
-<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 1920px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span> <span class="token number">...</span> <span class="token punctuation">}</span>
-</code></pre>
-<p>当视口在375px - 600px之间，设置特定字体大小18px</p>
-<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> screen <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 375px<span class="token punctuation">)</span> and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">body </span><span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">18</span>px<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+<p>还有一些容易被忽略的操作：获取一些特定属性的值</p>
+<blockquote>
+<p>offsetTop、offsetLeft、 offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、clientTop、clientLeft、clientWidth、clientHeight</p>
+</blockquote>
+<p>这些属性有一个共性，就是需要通过即时计算得到。因此浏览器为了获取这些值，也会进行回流</p>
+<p>除此还包括<code>getComputedStyle</code>方法，原理是一样的</p>
+<h3 id="重绘触发时机"><a href="#重绘触发时机" class="headerlink" title="重绘触发时机"></a>重绘触发时机</h3><p>触发回流一定会触发重绘</p>
+<p>可以把页面理解为一个黑板，黑板上有一朵画好的小花。现在我们要把这朵从左边移到了右边，那我们要先确定好右边的具体位置，画好形状（回流），再画上它原有的颜色（重绘）</p>
+<p>除此之外还有一些其他引起重绘行为：</p>
+<ul>
+<li>颜色的修改</li>
+<li>文本方向的修改</li>
+<li>阴影的修改</li>
+</ul>
+<h3 id="浏览器优化机制"><a href="#浏览器优化机制" class="headerlink" title="浏览器优化机制"></a>浏览器优化机制</h3><p>由于每次重排都会造成额外的计算消耗，因此大多数浏览器都会通过队列化修改并批量执行来优化重排过程。浏览器会将修改操作放入到队列里，直到过了一段时间或者操作达到了一个阈值，才清空队列</p>
+<p>当你获取布局信息的操作的时候，会强制队列刷新，包括前面讲到的<code>offsetTop</code>等方法都会返回最新的数据</p>
+<p>因此浏览器不得不清空队列，触发回流重绘来返回正确的值</p>
+<h2 id="三、如何减少"><a href="#三、如何减少" class="headerlink" title="三、如何减少"></a>三、如何减少</h2><p>我们了解了如何触发回流和重绘的场景，下面给出避免回流的经验：</p>
+<ul>
+<li>如果想设定元素的样式，通过改变元素的 <code>class</code> 类名 (尽可能在 DOM 树的最里层)</li>
+<li>避免设置多项内联样式</li>
+<li>应用元素的动画，使用 <code>position</code> 属性的 <code>fixed</code> 值或 <code>absolute</code> 值(如前文示例所提)</li>
+<li>避免使用 <code>table</code> 布局，<code>table</code> 中每个元素的大小以及内容的改动，都会导致整个 <code>table</code> 的重新计算</li>
+<li>对于那些复杂的动画，对其设置 <code>position: fixed/absolute</code>，尽可能地使元素脱离文档流，从而减少对其他元素的影响</li>
+<li>使用css3硬件加速，可以让<code>transform</code>、<code>opacity</code>、<code>filters</code>这些动画不会引起回流重绘</li>
+<li>避免使用 CSS 的 <code>JavaScript</code> 表达式</li>
+</ul>
+<p>在使用 <code>JavaScript</code> 动态插入多个节点时, 可以使用<code>DocumentFragment</code>. 创建后一次插入. 就能避免多次的渲染性能</p>
+<p>但有时候，我们会无可避免地进行回流或者重绘，我们可以更好使用它们</p>
+<p>例如，多次修改一个把元素布局的时候，我们很可能会如下操作</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'el'</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>top  <span class="token operator">=</span> el<span class="token punctuation">.</span>offsetTop  <span class="token operator">+</span> <span class="token number">10</span> <span class="token operator">+</span> <span class="token string">"px"</span><span class="token punctuation">;</span>
+    el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> el<span class="token punctuation">.</span>offsetLeft <span class="token operator">+</span> <span class="token number">10</span> <span class="token operator">+</span> <span class="token string">"px"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>通过媒体查询，可以通过给不同分辨率的设备编写不同的样式来实现响应式的布局，比如我们为不同分辨率的屏幕，设置不同的背景图片</p>
-<p>比如给小屏幕手机设置@2x图，为大屏幕手机设置@3x图，通过媒体查询就能很方便的实现</p>
-<h3 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h3><p>通过百分比单位 “ % “ 来实现响应式的效果</p>
-<p>比如当浏览器的宽度或者高度发生变化时，通过百分比单位，可以使得浏览器中的组件的宽和高随着浏览器的变化而变化，从而实现响应式的效果</p>
-<p><code>height</code>、<code>width</code>属性的百分比依托于父标签的宽高，但是其他盒子属性则不完全依赖父元素：</p>
-<ul>
-<li>子元素的top/left和bottom/right如果设置百分比，则相对于直接非static定位(默认定位)的父元素的高度/宽度</li>
-<li>子元素的padding如果设置百分比，不论是垂直方向或者是水平方向，都相对于直接父亲元素的width，而与父元素的height无关。</li>
-<li>子元素的margin如果设置成百分比，不论是垂直方向还是水平方向，都相对于直接父元素的width</li>
-<li>border-radius不一样，如果设置border-radius为百分比，则是相对于自身的宽度</li>
-</ul>
-<p>可以看到每个属性都使用百分比，会照成布局的复杂度，所以不建议使用百分比来实现响应式</p>
-<h3 id="vw-vh"><a href="#vw-vh" class="headerlink" title="vw/vh"></a>vw/vh</h3><p><code>vw</code>表示相对于视图窗口的宽度，<code>vh</code>表示相对于视图窗口高度。 任意层级元素，在使用<code>vw</code>单位的情况下，<code>1vw</code>都等于视图宽度的百分之一</p>
-<p>与百分比布局很相似，在以前文章提过与<code>%</code>的区别，这里就不再展开述说</p>
-<h3 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h3><p>在以前也讲到，<code>rem</code>是相对于根元素<code>html</code>的<code>font-size</code>属性，默认情况下浏览器字体大小为<code>16px</code>，此时<code>1rem = 16px</code></p>
-<p>可以利用前面提到的媒体查询，针对不同设备分辨率改变<code>font-size</code>的值，如下：</p>
-<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 414px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">html </span><span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">18</span>px
-  <span class="token punctuation">}</span>
+<p>每次循环都需要获取多次<code>offset</code>属性，比较糟糕，可以使用变量的形式缓存起来，待计算完毕再提交给浏览器发出重计算请求</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 缓存offsetLeft与offsetTop的值</span>
+<span class="token keyword">const</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'el'</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> offLeft <span class="token operator">=</span> el<span class="token punctuation">.</span>offsetLeft<span class="token punctuation">,</span> offTop <span class="token operator">=</span> el<span class="token punctuation">.</span>offsetTop
+
+<span class="token comment" spellcheck="true">// 在JS层面进行计算</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  offLeft <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">10</span>
+  offTop  <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">10</span>
 <span class="token punctuation">}</span>
 
-<span class="token atrule"><span class="token rule">@media</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 375px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">html </span><span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">16</span>px
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token atrule"><span class="token rule">@media</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 320px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">html </span><span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">12</span>px
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 一次性将计算结果应用到DOM上</span>
+el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> offLeft <span class="token operator">+</span> <span class="token string">"px"</span>
+el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>top <span class="token operator">=</span> offTop  <span class="token operator">+</span> <span class="token string">"px"</span>
 </code></pre>
-<p>为了更准确监听设备可视窗口变化，我们可以在<code>css</code>之前插入<code>script</code>标签，内容如下：</p>
-<pre class=" language-css"><code class="language-css"><span class="token selector">//动态为根元素设置字体大小
-function init () </span><span class="token punctuation">{</span>
-    // 获取屏幕宽度
-    var width = document<span class="token number">.</span>documentElement<span class="token number">.</span>clientWidth
-    // 设置根元素字体大小。此时为宽的<span class="token number">10</span>等分
-    document<span class="token number">.</span>documentElement<span class="token number">.</span>style<span class="token number">.</span>fontSize = width / <span class="token number">10</span> + <span class="token string">'px'</span>
-<span class="token punctuation">}</span>
-
-//首次加载应用，设置一次
-<span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-// 监听手机旋转的事件的时机，重新设置
-window<span class="token number">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'orientationchange'</span>, init<span class="token punctuation">)</span>
-// 监听手机窗口变化，重新设置
-window<span class="token number">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'resize'</span>, init<span class="token punctuation">)</span>
+<p>我们还可避免改变样式，使用类名去合并样式</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'container'</span><span class="token punctuation">)</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token string">'100px'</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token string">'200px'</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>border <span class="token operator">=</span> <span class="token string">'10px solid red'</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'red'</span>
 </code></pre>
-<p>无论设备可视窗口如何变化，始终设置<code>rem</code>为<code>width</code>的1/10，实现了百分比布局</p>
-<p>除此之外，我们还可以利用主流<code>UI</code>框架，如：<code>element ui</code>、<code>antd</code>提供的栅格布局实现响应式</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>响应式设计实现通常会从以下几方面思考：</p>
-<ul>
-<li>弹性盒子（包括图片、表格、视频）和媒体查询等技术</li>
-<li>使用百分比布局创建流式布局的弹性UI，同时使用媒体查询限制元素的尺寸和内容变更范围</li>
-<li>使用相对单位使得内容自适应调节</li>
-<li>选择断点，针对不同断点实现不同布局和内容展示</li>
-</ul>
-<h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h2><p>响应式布局优点可以看到：</p>
-<ul>
-<li>面对不同分辨率设备灵活性强</li>
-<li>能够快捷解决多设备显示适应问题</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>仅适用布局、信息、框架并不复杂的部门类型网站</li>
-<li>兼容各种设备工作量大，效率低下</li>
-<li>代码累赘，会出现隐藏无用的元素，加载时间加长</li>
-<li>其实这是一种折中性质的设计解决方案，多方面因素影响而达不到最佳效果</li>
-<li>一定程度上改变了网站原有的布局结构，会出现用户混淆的情况</li>
-</ul>
+<p>使用类名去合并样式</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>style<span class="token operator">></span>
+    <span class="token punctuation">.</span>basic_style <span class="token punctuation">{</span>
+        width<span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+        height<span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+        border<span class="token punctuation">:</span> 10px solid red<span class="token punctuation">;</span>
+        color<span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">></span>
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+    <span class="token keyword">const</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'container'</span><span class="token punctuation">)</span>
+    container<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'basic_style'</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
+<p>前者每次单独操作，都去触发一次渲染树更改（新浏览器不会），</p>
+<p>都去触发一次渲染树更改，从而导致相应的回流与重绘过程</p>
+<p>合并之后，等于我们将所有的更改一次性发出</p>
+<p>我们还可以通过通过设置元素属性<code>display: none</code>，将其从页面上去掉，然后再进行后续操作，这些后续操作也不会触发回流与重绘，这个过程称为离线操作</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'container'</span><span class="token punctuation">)</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token string">'100px'</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token string">'200px'</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>border <span class="token operator">=</span> <span class="token string">'10px solid red'</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'red'</span>
+</code></pre>
+<p>离线操作后</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'container'</span><span class="token punctuation">)</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">'none'</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token string">'100px'</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token string">'200px'</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>border <span class="token operator">=</span> <span class="token string">'10px solid red'</span>
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'red'</span>
+<span class="token operator">...</span>（省略了许多类似的后续操作）
+container<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">'block'</span>
+</code></pre>
 
                 
             </div>
@@ -567,7 +532,7 @@ window<span class="token number">.</span><span class="token function">addEventLi
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://L-Qxin.github.io/2022/10/19/xiang-ying-shi-she-ji/">http://L-Qxin.github.io/2022/10/19/xiang-ying-shi-she-ji/</a>
+                    <a href="http://L-Qxin.github.io/2022/10/19/css/hui-liu-chong-hui/">http://L-Qxin.github.io/2022/10/19/css/hui-liu-chong-hui/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -607,10 +572,6 @@ window<span class="token number">.</span><span class="token function">addEventLi
                             
                                 <a href="/tags/css/">
                                     <span class="chip bg-color">css</span>
-                                </a>
-                            
-                                <a href="/tags/html/">
-                                    <span class="chip bg-color">html</span>
                                 </a>
                             
                         </div>
@@ -740,10 +701,10 @@ window<span class="token number">.</span><span class="token function">addEventLi
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="/medias/reward/zfb.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="/medias/reward/weixin.jpg" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -780,12 +741,11 @@ window<span class="token number">.</span><span class="token function">addEventLi
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/10/19/xiang-ying-shi-she-ji/">
+                <a href="/2022/10/19/html/xiang-ying-shi-she-ji/">
                     <div class="card-image">
                         
                         
@@ -801,18 +761,21 @@ window<span class="token number">.</span><span class="token function">addEventLi
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-19
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LQXin
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -835,13 +798,13 @@ window<span class="token number">.</span><span class="token function">addEventLi
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/10/19/hui-liu-chong-hui/">
+                <a href="/2022/10/19/css/yuan-su-shui-ping-chui-zhi-ju-zhong-de-fang-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="回流、重绘">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="元素水平垂直居中的方法">
                         
-                        <span class="card-title">回流、重绘</span>
+                        <span class="card-title">元素水平垂直居中的方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -856,8 +819,12 @@ window<span class="token number">.</span><span class="token function">addEventLi
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LQXin
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1040,7 +1007,7 @@ window<span class="token number">.</span><span class="token function">addEventLi
                    type="playlist"
                    id="503838841"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
                    order='random'
@@ -1069,7 +1036,7 @@ window<span class="token number">.</span><span class="token function">addEventLi
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.8k</span>&nbsp;字
+                class="white-color">14k</span>&nbsp;字
             
             
             
@@ -1099,11 +1066,11 @@ window<span class="token number">.</span><span class="token function">addEventLi
                     var years = days * 365;
                     var today = new Date();
                     var startYear = "2018";
-                    var startMonth = "6";
-                    var startDate = "28";
-                    var startHour = "0";
-                    var startMinute = "0";
-                    var startSecond = "0";
+                    var startMonth = "7";
+                    var startDate = "19";
+                    var startHour = "17";
+                    var startMinute = "28";
+                    var startSecond = "16";
                     var todayYear = today.getFullYear();
                     var todayMonth = today.getMonth() + 1;
                     var todayDate = today.getDate();
@@ -1137,10 +1104,6 @@ window<span class="token number">.</span><span class="token function">addEventLi
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/L-Qxin" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
 
 
     <a href="mailto:liqixin1997@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
