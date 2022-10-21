@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: 前端框架, HTML,CSS,JavaScript,React,Vue.js等">
+    <meta name="keywords" content="HTML,CSS,JavaScript,React,Vue.js等">
     <meta name="description" content="专注于Web,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>分类: 前端框架 | LQXin的私人博客</title>
+    <title>LQXin的私人博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -201,6 +201,7 @@
 
 </header>
 
+    
     <div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
@@ -250,53 +251,69 @@
     </div>
 </div>
 
+
 <main class="content">
 
     
 
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分类
-            </div>
-            <div class="tag-chips">
-                
-                
-                
-                <a href="/categories/%E5%89%8D%E7%AB%AF/" title="前端: 12">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">前端
-                        <span class="tag-length">12</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" title="前端框架: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #F5EEF8;">前端框架
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
     
 
+    <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
-        <div class="row tags-posts">
+        <div class="row article-row">
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/09/30/css/he-zi-mo-xing-de-li-jie/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="盒子模型的理解">
+                            
+                            <span class="card-title">盒子模型的理解</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一、是什么当对一个文档进行布局（layout）的时候，浏览器的渲染引擎会根据标准之一的 CSS 基础框盒模型（CSS basic box model），将所有元素表示为一个个矩形的盒子（box）
+一个盒子由四个部分组成：content、pa
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-30
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/css/">
+                            <span class="chip bg-color">css</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2022/09/20/vue/vue3-zu-jian-jian-chuan-zhi/">
-                        <div class="card-image tag-image">
+                        <div class="card-image">
                             
                             
                             <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="vue3组件间传值">
@@ -304,6 +321,7 @@
                             <span class="card-title">vue3组件间传值</span>
                         </div>
                     </a>
+
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
@@ -350,9 +368,81 @@ propsProps方式是Vue中最常见的一种父传子的一种方式
                 </div>
             </div>
             
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/08/12/js/shen-kao-bei/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="深拷贝">
+                            
+                            <span class="card-title">深拷贝</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一、什么是深拷贝和浅拷贝浅拷贝是创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是指向内存的地址 ，所以如果其中一个对象改变了这个引用类型的值，就会影响到另一
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/js/">
+                            <span class="chip bg-color">js</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
         </div>
     </article>
+
 </main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a href="/"
+               class="left btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">2 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a class="right btn-floating btn-large disabled">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
 
 
 

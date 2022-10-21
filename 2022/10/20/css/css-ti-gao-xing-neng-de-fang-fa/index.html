@@ -358,21 +358,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-20
+                    2022-10-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    989
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    7 分
                 </div>
                 
 
@@ -394,6 +394,40 @@
 <p>5、慎用浮动、定位等高性能属性；</p>
 <p>6、尽量减少页面重排、重绘；</p>
 <p>7、属性值为0时，不加单位等等。</p>
+<p>8、内联首屏关键CSS</p>
+<p>9、异步加载CSS</p>
+<p>10、不要使用@import</p>
+<h3 id="内联首屏关键CSS"><a href="#内联首屏关键CSS" class="headerlink" title="内联首屏关键CSS"></a>内联首屏关键CSS</h3><p>在打开一个页面，页面首要内容出现在屏幕的时间影响着用户的体验，而通过内联css关键代码能够使浏览器在下载完html后就能立刻渲染</p>
+<p>而如果外部引用css代码，在解析html结构过程中遇到外部css文件，才会开始下载css代码，再渲染</p>
+<p>所以，CSS内联使用使渲染时间提前</p>
+<p>注意：但是较大的css代码并不合适内联（初始拥塞窗口、没有缓存），而其余代码则采取外部引用方式</p>
+<h3 id="异步加载CSS"><a href="#异步加载CSS" class="headerlink" title="异步加载CSS"></a>异步加载CSS</h3><p>在CSS文件请求、下载、解析完成之前，CSS会阻塞渲染，浏览器将不会渲染任何已处理的内容</p>
+<p>前面加载内联代码后，后面的外部引用css则没必要阻塞浏览器渲染。这时候就可以采取异步加载的方案，主要有如下：</p>
+<p>使用javascript将link标签插到head标签最后</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 创建link标签</span>
+<span class="token keyword">const</span> myCSS <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span> <span class="token string">"link"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+myCSS<span class="token punctuation">.</span>rel <span class="token operator">=</span> <span class="token string">"stylesheet"</span><span class="token punctuation">;</span>
+myCSS<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token string">"mystyles.css"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 插入到header的最后位置</span>
+document<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span> myCSS<span class="token punctuation">,</span> document<span class="token punctuation">.</span>head<span class="token punctuation">.</span>childNodes<span class="token punctuation">[</span> document<span class="token punctuation">.</span>head<span class="token punctuation">.</span>childNodes<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">.</span>nextSibling <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>设置link标签media属性为noexis，浏览器会认为当前样式表不适用当前类型，会在不阻塞页面渲染的情况下再进行下载。加载完成后，将media的值设为screen或all，从而让浏览器开始解析CSS</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mystyles.css<span class="token punctuation">"</span></span> <span class="token attr-name">media</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>noexist<span class="token punctuation">"</span></span> <span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>this.media<span class="token punctuation">=</span><span class="token punctuation">'</span>all<span class="token punctuation">'</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</code></pre>
+<p>通过rel属性将link元素标记为alternate可选样式表，也能实现浏览器异步加载。同样别忘了加载完成之后，将rel设回stylesheet</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alternate stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mystyles.css<span class="token punctuation">"</span></span> <span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>this.rel<span class="token punctuation">=</span><span class="token punctuation">'</span>stylesheet<span class="token punctuation">'</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</code></pre>
+<h3 id="资源压缩"><a href="#资源压缩" class="headerlink" title="资源压缩"></a>资源压缩</h3><p>利用webpack、gulp/grunt、rollup等模块化工具，将css代码进行压缩，使文件变小，大大降低了浏览器的加载时间</p>
+<h3 id="合理使用选择器"><a href="#合理使用选择器" class="headerlink" title="合理使用选择器"></a>合理使用选择器</h3><p>css匹配的规则是从右往左开始匹配，例如#markdown .content h3匹配规则如下：</p>
+<p>先找到h3标签元素<br>然后去除祖先不是.content的元素<br>最后去除祖先不是#markdown的元素<br>如果嵌套的层级更多，页面中的元素更多，那么匹配所要花费的时间代价自然更高</p>
+<p>所以我们在编写选择器的时候，可以遵循以下规则：</p>
+<p>不要嵌套使用过多复杂选择器，最好不要三层以上<br>使用id选择器就没必要再进行嵌套<br>通配符和属性选择器效率最低，避免使用<br>#减少使用昂贵的属性<br>在页面发生重绘的时候，昂贵属性如box-shadow/border-radius/filter/透明度/:nth-child等，会降低浏览器的渲染性能</p>
+<h3 id="不要使用-import"><a href="#不要使用-import" class="headerlink" title="不要使用@import"></a>不要使用@import</h3><p>css样式文件有两种引入方式，一种是link元素，另一种是@import</p>
+<p>@import会影响浏览器的并行下载，使得页面在加载时增加额外的延迟，增添了额外的往返耗时</p>
+<p>而且多个@import可能会导致下载顺序紊乱</p>
+<p>比如一个css文件index.css包含了以下内容：@import url(“reset.css”)</p>
+<p>那么浏览器就必须先把index.css下载、解析和执行后，才下载、解析和执行第二个文件reset.css</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>减少重排操作，以及减少不必要的重绘<br>了解哪些属性可以继承而来，避免对这些属性重复编写<br>cssSprite，合成所有icon图片，用宽高加上backgroud-position的背景图方式显现出我们要的icon图，减少了http请求<br>把小的icon图片转成base64编码<br>CSS3动画或者过渡尽量使用transform和opacity来实现动画，不要使用left和top属性</p>
 <h2 id="CSS优化主要是4个方面："><a href="#CSS优化主要是4个方面：" class="headerlink" title="CSS优化主要是4个方面："></a><strong>CSS优化主要是4个方面：</strong></h2><ul>
 <li><p>加载性能</p>
 <p>主要是从减少文件体积，减少阻塞加载，提高并发方面入手</p>
@@ -973,7 +1007,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14k</span>&nbsp;字
+                class="white-color">18.2k</span>&nbsp;字
             
             
             

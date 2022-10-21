@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="响应式设计, HTML,CSS,JavaScript,React,Vue.js等">
+    <meta name="keywords" content="bind、call、apply 区别, HTML,CSS,JavaScript,React,Vue.js等">
     <meta name="description" content="专注于Web,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>响应式设计 | LQXin的私人博客</title>
+    <title>bind、call、apply 区别 | LQXin的私人博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -205,12 +205,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">响应式设计</h1>
+                    <h1 class="description center-align post-title">bind、call、apply 区别</h1>
                 </div>
             </div>
         </div>
@@ -326,12 +326,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/css/">
-                                <span class="chip bg-color">css</span>
-                            </a>
-                        
-                            <a href="/tags/html/">
-                                <span class="chip bg-color">html</span>
+                            <a href="/tags/js/">
+                                <span class="chip bg-color">js</span>
                             </a>
                         
                     </div>
@@ -355,7 +351,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-10-19
+                    2022-10-21
                 </div>
                 
 
@@ -369,14 +365,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    926
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    3 分
                 </div>
                 
 
@@ -391,116 +387,108 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、是什么"><a href="#一、是什么" class="headerlink" title="一、是什么"></a>一、是什么</h2><p>响应式网站设计（Responsive Web design）是一种网络页面设计布局，页面的设计与开发应当根据用户行为以及设备环境(系统平台、屏幕尺寸、屏幕定向等)进行相应的响应和调整</p>
-<p>描述响应式界面最著名的一句话就是“Content is like water”</p>
-<p>大白话便是“如果将屏幕看作容器，那么内容就像水一样”</p>
-<p>响应式网站常见特点：</p>
-<ul>
-<li>同时适配PC + 平板 + 手机等</li>
-<li>标签导航在接近手持终端设备时改变为经典的抽屉式导航</li>
-<li>网站的布局会根据视口来调整模块的大小和位置</li>
-</ul>
-<p><img src="https://static.vue-js.com/ae68be30-9dba-11eb-85f6-6fac77c0c9b3.png" alt="响应式"></p>
-<h2 id="二、实现方式"><a href="#二、实现方式" class="headerlink" title="二、实现方式"></a>二、实现方式</h2><p>响应式设计的基本原理是通过媒体查询检测不同的设备屏幕尺寸做处理，为了处理移动端，页面头部必须有<code>meta</code>声明<code>viewport</code></p>
-<pre class=" language-html"><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no”>
+                <h2 id="一、作用"><a href="#一、作用" class="headerlink" title="一、作用"></a>一、作用</h2><p><code>call</code>、<code>apply</code>、<code>bind</code>作用是改变函数执行时的上下文，简而言之就是改变函数运行时的<code>this</code>指向</p>
+<p>那么什么情况下需要改变<code>this</code>的指向呢？下面举个例子</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">"lucy"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"martin"</span><span class="token punctuation">,</span>
+    say<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// martin，this 指向 obj 对象</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>say<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// lucy，this 指向 window 对象</span>
 </code></pre>
-<p>属性对应如下：</p>
-<ul>
-<li>width=device-width: 是自适应手机屏幕的尺寸宽度</li>
-<li>maximum-scale:是缩放比例的最大值</li>
-<li>inital-scale:是缩放的初始化</li>
-<li>user-scalable:是用户的可以缩放的操作</li>
-</ul>
-<p>实现响应式布局的方式有如下：</p>
-<ul>
-<li>媒体查询</li>
-<li>百分比</li>
-<li>vw/vh</li>
-<li>rem</li>
-</ul>
-<h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p><code>CSS3</code>中的增加了更多的媒体查询，就像<code>if</code>条件表达式一样，我们可以设置不同类型的媒体条件，并根据对应的条件，给相应符合条件的媒体调用相对应的样式表</p>
-<p>使用<code>@Media</code>查询，可以针对不同的媒体类型定义不同的样式，如：</p>
-<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 1920px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span> <span class="token number">...</span> <span class="token punctuation">}</span>
+<p>从上面可以看到，正常情况<code>say</code>方法输出<code>martin</code></p>
+<p>但是我们把<code>say</code>放在<code>setTimeout</code>方法中，在定时器中是作为回调函数来执行的，因此回到主栈执行时是在全局执行上下文的环境中执行的，这时候<code>this</code>指向<code>window</code>，所以输出<code>lucy</code></p>
+<p>我们实际需要的是<code>this</code>指向<code>obj</code>对象，这时候就需要该改变<code>this</code>指向了</p>
+<pre class=" language-js"><code class="language-js"><span class="token function">setTimeout</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>say<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//martin，this指向obj对象</span>
 </code></pre>
-<p>当视口在375px - 600px之间，设置特定字体大小18px</p>
-<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> screen <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 375px<span class="token punctuation">)</span> and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">body </span><span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">18</span>px<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+<h2 id="二、区别"><a href="#二、区别" class="headerlink" title="二、区别"></a>二、区别</h2><p>下面再来看看<code>apply</code>、<code>call</code>、<code>bind</code>的使用</p>
+<h3 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h3><p><code>apply</code>接受两个参数，第一个参数是<code>this</code>的指向，第二个参数是函数接受的参数，以数组的形式传入</p>
+<p>改变<code>this</code>指向后原函数会立即执行，且此方法只是临时改变<code>this</code>指向一次</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>通过媒体查询，可以通过给不同分辨率的设备编写不同的样式来实现响应式的布局，比如我们为不同分辨率的屏幕，设置不同的背景图片</p>
-<p>比如给小屏幕手机设置@2x图，为大屏幕手机设置@3x图，通过媒体查询就能很方便的实现</p>
-<h3 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h3><p>通过百分比单位 “ % “ 来实现响应式的效果</p>
-<p>比如当浏览器的宽度或者高度发生变化时，通过百分比单位，可以使得浏览器中的组件的宽和高随着浏览器的变化而变化，从而实现响应式的效果</p>
-<p><code>height</code>、<code>width</code>属性的百分比依托于父标签的宽高，但是其他盒子属性则不完全依赖父元素：</p>
-<ul>
-<li>子元素的top/left和bottom/right如果设置百分比，则相对于直接非static定位(默认定位)的父元素的高度/宽度</li>
-<li>子元素的padding如果设置百分比，不论是垂直方向或者是水平方向，都相对于直接父亲元素的width，而与父元素的height无关。</li>
-<li>子元素的margin如果设置成百分比，不论是垂直方向还是水平方向，都相对于直接父元素的width</li>
-<li>border-radius不一样，如果设置border-radius为百分比，则是相对于自身的宽度</li>
-</ul>
-<p>可以看到每个属性都使用百分比，会照成布局的复杂度，所以不建议使用百分比来实现响应式</p>
-<h3 id="vw-vh"><a href="#vw-vh" class="headerlink" title="vw/vh"></a>vw/vh</h3><p><code>vw</code>表示相对于视图窗口的宽度，<code>vh</code>表示相对于视图窗口高度。 任意层级元素，在使用<code>vw</code>单位的情况下，<code>1vw</code>都等于视图宽度的百分之一</p>
-<p>与百分比布局很相似，在以前文章提过与<code>%</code>的区别，这里就不再展开述说</p>
-<h3 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h3><p>在以前也讲到，<code>rem</code>是相对于根元素<code>html</code>的<code>font-size</code>属性，默认情况下浏览器字体大小为<code>16px</code>，此时<code>1rem = 16px</code></p>
-<p>可以利用前面提到的媒体查询，针对不同设备分辨率改变<code>font-size</code>的值，如下：</p>
-<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 414px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">html </span><span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">18</span>px
-  <span class="token punctuation">}</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    myname<span class="token punctuation">:</span><span class="token string">"张三"</span>
 <span class="token punctuation">}</span>
 
-<span class="token atrule"><span class="token rule">@media</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 375px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">html </span><span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">16</span>px
-  <span class="token punctuation">}</span>
+fn<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// this会变成传入的obj，传入的参数必须是一个数组；</span>
+<span class="token function">fn</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// this指向window</span>
+</code></pre>
+<p>当第一个参数为<code>null</code>、<code>undefined</code>的时候，默认指向<code>window</code>(在浏览器中)</p>
+<pre class=" language-js"><code class="language-js">fn<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// this指向window</span>
+fn<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>undefined<span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// this指向window</span>
+</code></pre>
+<h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><p><code>call</code>方法的第一个参数也是<code>this</code>的指向，后面传入的是一个参数列表</p>
+<p>跟<code>apply</code>一样，改变<code>this</code>指向后原函数会立即执行，且此方法只是临时改变<code>this</code>指向一次</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    myname<span class="token punctuation">:</span><span class="token string">"张三"</span>
 <span class="token punctuation">}</span>
 
-<span class="token atrule"><span class="token rule">@media</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 320px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">html </span><span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">12</span>px
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// this会变成传入的obj，传入的参数必须是一个数组；</span>
+<span class="token function">fn</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// this指向window</span>
 </code></pre>
-<p>为了更准确监听设备可视窗口变化，我们可以在<code>css</code>之前插入<code>script</code>标签，内容如下：</p>
-<pre class=" language-css"><code class="language-css"><span class="token selector">//动态为根元素设置字体大小
-function init () </span><span class="token punctuation">{</span>
-    // 获取屏幕宽度
-    var width = document<span class="token number">.</span>documentElement<span class="token number">.</span>clientWidth
-    // 设置根元素字体大小。此时为宽的<span class="token number">10</span>等分
-    document<span class="token number">.</span>documentElement<span class="token number">.</span>style<span class="token number">.</span>fontSize = width / <span class="token number">10</span> + <span class="token string">'px'</span>
+<p>同样的，当第一个参数为<code>null</code>、<code>undefined</code>的时候，默认指向<code>window</code>(在浏览器中)</p>
+<pre class=" language-js"><code class="language-js">fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// this指向window</span>
+fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>undefined<span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// this指向window</span>
+</code></pre>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><p>bind方法和call很相似，第一参数也是<code>this</code>的指向，后面传入的也是一个参数列表(但是这个参数列表可以分多次传入)</p>
+<p>改变<code>this</code>指向后不会立即执行，而是返回一个永久改变<code>this</code>指向的函数</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    myname<span class="token punctuation">:</span><span class="token string">"张三"</span>
 <span class="token punctuation">}</span>
 
-//首次加载应用，设置一次
-<span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-// 监听手机旋转的事件的时机，重新设置
-window<span class="token number">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'orientationchange'</span>, init<span class="token punctuation">)</span>
-// 监听手机窗口变化，重新设置
-window<span class="token number">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'resize'</span>, init<span class="token punctuation">)</span>
+<span class="token keyword">const</span> bindFn <span class="token operator">=</span> fn<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// this 也会变成传入的obj ，bind不是立即执行需要执行一次</span>
+<span class="token function">bindFn</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// this指向obj</span>
+<span class="token function">fn</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// this指向window</span>
 </code></pre>
-<p>无论设备可视窗口如何变化，始终设置<code>rem</code>为<code>width</code>的1/10，实现了百分比布局</p>
-<p>除此之外，我们还可以利用主流<code>UI</code>框架，如：<code>element ui</code>、<code>antd</code>提供的栅格布局实现响应式</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>响应式设计实现通常会从以下几方面思考：</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>从上面可以看到，<code>apply</code>、<code>call</code>、<code>bind</code>三者的区别在于：</p>
 <ul>
-<li>弹性盒子（包括图片、表格、视频）和媒体查询等技术</li>
-<li>使用百分比布局创建流式布局的弹性UI，同时使用媒体查询限制元素的尺寸和内容变更范围</li>
-<li>使用相对单位使得内容自适应调节</li>
-<li>选择断点，针对不同断点实现不同布局和内容展示</li>
+<li>三者都可以改变函数的<code>this</code>对象指向</li>
+<li>三者第一个参数都是<code>this</code>要指向的对象，如果如果没有这个参数或参数为<code>undefined</code>或<code>null</code>，则默认指向全局<code>window</code></li>
+<li>三者都可以传参，但是<code>apply</code>是数组，而<code>call</code>是参数列表，且<code>apply</code>和<code>call</code>是一次性传入参数，而<code>bind</code>可以分为多次传入</li>
+<li><code>bind</code>是返回绑定this之后的函数，<code>apply</code>、<code>call</code> 则是立即执行</li>
 </ul>
-<h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h2><p>响应式布局优点可以看到：</p>
+<h2 id="三、实现"><a href="#三、实现" class="headerlink" title="三、实现"></a>三、实现</h2><p>实现<code>bind</code>的步骤，我们可以分解成为三部分：</p>
 <ul>
-<li>面对不同分辨率设备灵活性强</li>
-<li>能够快捷解决多设备显示适应问题</li>
+<li>修改<code>this</code>指向</li>
+<li>动态传递参数</li>
 </ul>
-<p>缺点：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 方式一：只在bind中传递函数参数</span>
+fn<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// 方式二：在bind中传递函数参数，也在返回函数中传递参数</span>
+fn<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre>
 <ul>
-<li>仅适用布局、信息、框架并不复杂的部门类型网站</li>
-<li>兼容各种设备工作量大，效率低下</li>
-<li>代码累赘，会出现隐藏无用的元素，加载时间加长</li>
-<li>其实这是一种折中性质的设计解决方案，多方面因素影响而达不到最佳效果</li>
-<li>一定程度上改变了网站原有的布局结构，会出现用户混淆的情况</li>
+<li>兼容<code>new</code>关键字</li>
 </ul>
+<p>整体实现代码如下：</p>
+<pre class=" language-js"><code class="language-js">Function<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>myBind <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 判断调用对象是否为函数</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span> <span class="token operator">!==</span> <span class="token string">"function"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">"Error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 获取参数</span>
+    <span class="token keyword">const</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arguments<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          fn <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token function">Fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token comment" spellcheck="true">// 根据调用方式，传入不同绑定值</span>
+        <span class="token keyword">return</span> fn<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token keyword">instanceof</span> <span class="token class-name">Fn</span> <span class="token operator">?</span> <span class="token keyword">new</span> <span class="token class-name">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>arguments<span class="token punctuation">)</span> <span class="token punctuation">:</span> context<span class="token punctuation">,</span> args<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token operator">...</span>arguments<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
                 
             </div>
@@ -527,7 +515,7 @@ window<span class="token number">.</span><span class="token function">addEventLi
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://L-Qxin.github.io/2022/10/19/html/xiang-ying-shi-she-ji/">http://L-Qxin.github.io/2022/10/19/html/xiang-ying-shi-she-ji/</a>
+                    <a href="http://L-Qxin.github.io/2022/10/21/js/bind-call-apply-qu-bie/">http://L-Qxin.github.io/2022/10/21/js/bind-call-apply-qu-bie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -565,12 +553,8 @@ window<span class="token number">.</span><span class="token function">addEventLi
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/css/">
-                                    <span class="chip bg-color">css</span>
-                                </a>
-                            
-                                <a href="/tags/html/">
-                                    <span class="chip bg-color">html</span>
+                                <a href="/tags/js/">
+                                    <span class="chip bg-color">js</span>
                                 </a>
                             
                         </div>
@@ -744,13 +728,13 @@ window<span class="token number">.</span><span class="token function">addEventLi
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/10/20/css/css-ti-gao-xing-neng-de-fang-fa/">
+                <a href="/2022/10/21/js/shi-jian-xun-huan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="CSS提高性能的方法">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="事件循环">
                         
-                        <span class="card-title">CSS提高性能的方法</span>
+                        <span class="card-title">事件循环</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -761,7 +745,7 @@ window<span class="token number">.</span><span class="token function">addEventLi
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-20
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-21
                         </span>
                         <span class="publish-author">
                             
@@ -778,8 +762,8 @@ window<span class="token number">.</span><span class="token function">addEventLi
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/css/">
-                        <span class="chip bg-color">css</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
                     </a>
                     
                 </div>
@@ -793,13 +777,13 @@ window<span class="token number">.</span><span class="token function">addEventLi
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/10/19/css/hui-liu-chong-hui/">
+                <a href="/2022/10/20/js/bi-bao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="回流、重绘">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="闭包">
                         
-                        <span class="card-title">回流、重绘</span>
+                        <span class="card-title">闭包</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -810,7 +794,7 @@ window<span class="token number">.</span><span class="token function">addEventLi
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-20
                             </span>
                         <span class="publish-author">
                             
@@ -827,8 +811,8 @@ window<span class="token number">.</span><span class="token function">addEventLi
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/css/">
-                        <span class="chip bg-color">css</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
                     </a>
                     
                 </div>
