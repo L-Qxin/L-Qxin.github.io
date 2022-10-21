@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深拷贝, HTML,CSS,JavaScript,React,Vue.js等">
+    <meta name="keywords" content="BOM对象, HTML,CSS,JavaScript,React,Vue.js等">
     <meta name="description" content="专注于Web,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>深拷贝 | LQXin的私人博客</title>
+    <title>BOM对象 | LQXin的私人博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -205,12 +205,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深拷贝</h1>
+                    <h1 class="description center-align post-title">BOM对象</h1>
                 </div>
             </div>
         </div>
@@ -351,7 +351,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-12
+                    2022-10-21
                 </div>
                 
 
@@ -365,14 +365,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    753
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -387,127 +387,120 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、什么是深拷贝和浅拷贝"><a href="#一、什么是深拷贝和浅拷贝" class="headerlink" title="一、什么是深拷贝和浅拷贝"></a>一、什么是深拷贝和浅拷贝</h2><p>浅拷贝是创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是指向内存的地址 ，所以如果其中一个对象改变了这个引用类型的值，就会影响到另一个对象。<br>深拷贝是将一个对象从内存中完整的拷贝一份出来,从堆内存中开辟一个新的区域存放新对象,且修改新对象不会影响原对象。</p>
-<h2 id="二、实现深拷贝的五种方式"><a href="#二、实现深拷贝的五种方式" class="headerlink" title="二、实现深拷贝的五种方式"></a>二、实现深拷贝的五种方式</h2><h3 id="1、递归调用"><a href="#1、递归调用" class="headerlink" title="1、递归调用"></a>1、递归调用</h3><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 递归调用</span>
-<span class="token keyword">const</span> deepCopy <span class="token operator">=</span> <span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// 判断传入的值是否为一个对象</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> obj <span class="token operator">!==</span> <span class="token string">"object"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token comment" spellcheck="true">// 判断对象的类型 注意这里不考虑包装类对象</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"[object Date]"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"[object RegExp]"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"[object Undefined]"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token comment" spellcheck="true">// 判断对象是类</span>
-  <span class="token keyword">let</span> newObj <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>  <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">in</span> obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> obj<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        newObj<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>item<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
-        newObj<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">=</span> obj<span class="token punctuation">[</span>item<span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> newObj
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+                <h2 id="一、是什么"><a href="#一、是什么" class="headerlink" title="一、是什么"></a>一、是什么</h2><p><code>BOM</code> (Browser Object Model)，浏览器对象模型，提供了独立于内容与浏览器窗口进行交互的对象</p>
+<p>其作用就是跟浏览器做一些交互效果,比如如何进行页面的后退，前进，刷新，浏览器的窗口发生变化，滚动条的滚动，以及获取客户的一些信息如：浏览器品牌版本，屏幕分辨率</p>
+<p>浏览器的全部内容可以看成<code>DOM</code>，整个浏览器可以看成<code>BOM</code>。区别如下：</p>
+<p><img src="https://static.vue-js.com/482f33e0-8089-11eb-85f6-6fac77c0c9b3.png" alt="img"></p>
+<h2 id="二、window"><a href="#二、window" class="headerlink" title="二、window"></a>二、window</h2><p><code>Bom</code>的核心对象是<code>window</code>，它表示浏览器的一个实例</p>
+<p>在浏览器中，<code>window</code>对象有双重角色，即是浏览器窗口的一个接口，又是全局对象</p>
+<p>因此所有在全局作用域中声明的变量、函数都会变成<code>window</code>对象的属性和方法</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'js每日一题'</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">lookName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    info<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        age<span class="token punctuation">:</span> <span class="token number">24</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span>
-foo<span class="token punctuation">.</span>info<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//js每日一题</span>
+<span class="token function">lookName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//js每日一题</span>
+window<span class="token punctuation">.</span><span class="token function">lookName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//js每日一题</span>
 </code></pre>
-<h3 id="2、JSON-stringify-JSON-parse"><a href="#2、JSON-stringify-JSON-parse" class="headerlink" title="2、JSON.stringify + JSON.parse"></a>2、JSON.stringify + JSON.parse</h3><pre class=" language-js"><code class="language-js">JSON<span class="token punctuation">.</span>stringify
-情况一： 对象内不存在undefined、symbol、<span class="token keyword">function</span>类型的属性时
-<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    info<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        age<span class="token punctuation">:</span> <span class="token number">24</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// { name: '张三', info: { age: 24 } } { name: '张三', info: { age: 24 } }</span>
-foo<span class="token punctuation">.</span>info<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// { name: '张三', info: { age: 25 } } { name: '张三', info: { age: 24 } }</span>
-
-情况二：当对象内存在undefined、symbol、<span class="token keyword">function</span>类型的属性时，在序列化过程中会被忽略。
-当属性为<span class="token number">NaN</span> 和 <span class="token number">Infinity</span> 格式的数值及 <span class="token keyword">null</span> 都会被当做 nul
-<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token punctuation">:</span> <span class="token string">"张三"</span><span class="token punctuation">,</span>
-  age<span class="token punctuation">:</span> undefined<span class="token punctuation">,</span>
-  height<span class="token punctuation">:</span> <span class="token number">183</span><span class="token punctuation">,</span>
-  gender<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"男"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//</span>
-  say<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-  aa<span class="token punctuation">:</span> <span class="token number">NaN</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token comment" spellcheck="true">// {aa: NaN, age: undefined, gender: Symbol(男), height: null, name: "张三"} { {name: '张三', height: null, aa: null} }</span>
-
-JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 第二个参数为可选参数，可以是一个函数或者数组，
-当是数组时表示需要被转化的属性列表，但undeinfed<span class="token punctuation">,</span>symbol<span class="token punctuation">,</span><span class="token keyword">function</span>类型的属性依然会被忽略
-
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">,</span> <span class="token string">'gender'</span><span class="token punctuation">,</span> <span class="token string">'say'</span><span class="token punctuation">,</span> <span class="token string">'aa'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newFoo<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// {name: '张三', aa: null}</span>
+<p>关于窗口控制方法如下：</p>
+<ul>
+<li><code>moveBy(x,y)</code>：从当前位置水平移动窗体x个像素，垂直移动窗体y个像素，x为负数，将向左移动窗体，y为负数，将向上移动窗体</li>
+<li><code>moveTo(x,y)</code>：移动窗体左上角到相对于屏幕左上角的(x,y)点</li>
+<li><code>resizeBy(w,h)</code>：相对窗体当前的大小，宽度调整w个像素，高度调整h个像素。如果参数为负值，将缩小窗体，反之扩大窗体</li>
+<li><code>resizeTo(w,h)</code>：把窗体宽度调整为w个像素，高度调整为h个像素</li>
+<li><code>scrollTo(x,y)</code>：如果有滚动条，将横向滚动条移动到相对于窗体宽度为x个像素的位置，将纵向滚动条移动到相对于窗体高度为y个像素的位置</li>
+<li><code>scrollBy(x,y)</code>： 如果有滚动条，将横向滚动条向左移动x个像素，将纵向滚动条向下移动y个像素</li>
+</ul>
+<p><code>window.open()</code> 既可以导航到一个特定的<code>url</code>，也可以打开一个新的浏览器窗口</p>
+<p>如果 <code>window.open()</code> 传递了第二个参数，且该参数是已有窗口或者框架的名称，那么就会在目标窗口加载第一个参数指定的URL</p>
+<pre class=" language-js"><code class="language-js">window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'htttp://www.vue3js.cn'</span><span class="token punctuation">,</span><span class="token string">'topFrame'</span><span class="token punctuation">)</span>
+<span class="token operator">==</span><span class="token operator">></span> <span class="token operator">&lt;</span> a href<span class="token operator">=</span><span class="token string">" "</span> target<span class="token operator">=</span><span class="token string">"topFrame"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span> a<span class="token operator">></span>
 </code></pre>
-<h3 id="3、lodash"><a href="#3、lodash" class="headerlink" title="3、lodash"></a>3、lodash</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> _ <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash'</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    info<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        age<span class="token punctuation">:</span> <span class="token number">24</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">cloneDeep</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-foo<span class="token punctuation">.</span>info<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// { name: '张三', info: { age: 25 } } { name: '张三', info: { age: 24 } }</span>
+<p><code>window.open()</code> 会返回新窗口的引用，也就是新窗口的 <code>window</code> 对象</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> myWin <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'http://www.vue3js.cn'</span><span class="token punctuation">,</span><span class="token string">'myWin'</span><span class="token punctuation">)</span>
 </code></pre>
-<h3 id="4、Object-assgin"><a href="#4、Object-assgin" class="headerlink" title="4、Object.assgin"></a>4、Object.assgin</h3><p>注意：只有当对象中没有嵌套对象时，才可以实现深拷贝</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    age<span class="token punctuation">:</span> <span class="token number">24</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> foo<span class="token punctuation">)</span>
-foo<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// {name: '张三', age: 25} {name: '张三', age: 24}</span>
-
-<span class="token comment" spellcheck="true">// 对象中有内嵌的对象时</span>
-<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    info<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        age<span class="token punctuation">:</span> <span class="token number">24</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> foo<span class="token punctuation">)</span>
-foo<span class="token punctuation">.</span>info<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// { name: '张三', info: { age: 25 } } { name: '张三', info: { age: 25 } }</span>
+<p><code>window.close()</code> 仅用于通过 <code>window.open()</code> 打开的窗口</p>
+<p>新创建的 <code>window</code> 对象有一个 <code>opener</code> 属性，该属性指向打开他的原始窗口对象</p>
+<h2 id="三、location"><a href="#三、location" class="headerlink" title="三、location"></a>三、location</h2><p><code>url</code>地址如下：</p>
+<pre class=" language-http"><code class="language-http"><span class="token header-name keyword">http:</span>//foouser:barpassword@www.wrox.com:80/WileyCDA/?q=javascript#contents
 </code></pre>
-<h3 id="5、structuredClone"><a href="#5、structuredClone" class="headerlink" title="5、structuredClone"></a>5、structuredClone</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    info<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        age<span class="token punctuation">:</span> <span class="token number">24</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> <span class="token function">structuredClone</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// </span>
-foo<span class="token punctuation">.</span>info<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// { name: '张三', info: { age: 25 } } { name: '张三', info: { age: 24 } }</span>
+<p><code>location</code>属性描述如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>例子</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hash</td>
+<td>“#contents”</td>
+<td>utl中#后面的字符，没有则返回空串</td>
+</tr>
+<tr>
+<td>host</td>
+<td><a target="_blank" rel="noopener" href="http://www.wrox.com/">www.wrox.com:80</a></td>
+<td>服务器名称和端口号</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td><a target="_blank" rel="noopener" href="http://www.wrox.com/">www.wrox.com</a></td>
+<td>域名，不带端口号</td>
+</tr>
+<tr>
+<td>href</td>
+<td><a target="_blank" rel="noopener" href="http://www.wrox.com/WileyCDA/?q=javascript#contents">http://www.wrox.com:80/WileyCDA/?q=javascript#contents</a></td>
+<td>完整url</td>
+</tr>
+<tr>
+<td>pathname</td>
+<td>“/WileyCDA/“</td>
+<td>服务器下面的文件路径</td>
+</tr>
+<tr>
+<td>port</td>
+<td>80</td>
+<td>url的端口号，没有则为空</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>http:</td>
+<td>使用的协议</td>
+</tr>
+<tr>
+<td>search</td>
+<td>?q=javascript</td>
+<td>url的查询字符串，通常为？后面的内容</td>
+</tr>
+</tbody></table>
+<p>除了 <code>hash</code>之外，只要修改<code>location</code>的一个属性，就会导致页面重新加载新<code>URL</code></p>
+<p><code>location.reload()</code>，此方法可以重新刷新当前页面。这个方法会根据最有效的方式刷新页面，如果页面自上一次请求以来没有改变过，页面就会从浏览器缓存中重新加载</p>
+<p>如果要强制从服务器中重新加载，传递一个参数<code>true</code>即可</p>
+<h2 id="四、navigator"><a href="#四、navigator" class="headerlink" title="四、navigator"></a>四、navigator</h2><p><code>navigator</code> 对象主要用来获取浏览器的属性，区分浏览器类型。属性较多，且兼容性比较复杂</p>
+<p>下表列出了<code>navigator</code>对象接口定义的属性和方法：</p>
+<p><img src="https://static.vue-js.com/6797ab40-8089-11eb-ab90-d9ae814b240d.png" alt="img"></p>
+<p><img src="https://static.vue-js.com/74096620-8089-11eb-ab90-d9ae814b240d.png" alt="img"></p>
+<h2 id="五、screen"><a href="#五、screen" class="headerlink" title="五、screen"></a>五、screen</h2><p>保存的纯粹是客户端能力信息，也就是浏览器窗口外面的客户端显示器的信息，比如像素宽度和像素高度</p>
+<p><img src="https://static.vue-js.com/7d6b21e0-8089-11eb-85f6-6fac77c0c9b3.png" alt="img"></p>
+<h2 id="六、history"><a href="#六、history" class="headerlink" title="六、history"></a>六、history</h2><p><code>history</code>对象主要用来操作浏览器<code>URL</code>的历史记录，可以通过参数向前，向后，或者向指定<code>URL</code>跳转</p>
+<p>常用的属性如下：</p>
+<ul>
+<li><code>history.go()</code></li>
+</ul>
+<p>接收一个整数数字或者字符串参数：向最近的一个记录中包含指定字符串的页面跳转，</p>
+<pre class=" language-js"><code class="language-js">history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token string">'maixaofei.com'</span><span class="token punctuation">)</span>
 </code></pre>
-<p>该方法为Web最新的 API，存在兼容问题</p>
+<p>当参数为整数数字的时候，正数表示向前跳转指定的页面，负数为向后跳转指定的页面</p>
+<pre class=" language-js"><code class="language-js">history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//向前跳转三个记录</span>
+history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//向后跳转一个记录</span>
+</code></pre>
+<ul>
+<li><code>history.forward()</code>：向前跳转一个页面</li>
+<li><code>history.back()</code>：向后跳转一个页面</li>
+<li><code>history.length</code>：获取历史记录数</li>
+</ul>
 
                 
             </div>
@@ -534,7 +527,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://L-Qxin.github.io/2019/08/12/js/shen-kao-bei/">http://L-Qxin.github.io/2019/08/12/js/shen-kao-bei/</a>
+                    <a href="http://L-Qxin.github.io/2022/10/21/bom-dui-xiang/">http://L-Qxin.github.io/2022/10/21/bom-dui-xiang/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -747,13 +740,13 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09/20/vue/vue3-zu-jian-jian-chuan-zhi/">
+                <a href="/2022/10/21/javascript-ben-di-cun-chu-de-fang-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="vue3组件间传值">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Javascript本地存储的方式">
                         
-                        <span class="card-title">vue3组件间传值</span>
+                        <span class="card-title">Javascript本地存储的方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -764,14 +757,14 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-21
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="post-category">
-                                    前端框架
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
@@ -781,8 +774,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/vue/">
-                        <span class="chip bg-color">vue</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
                     </a>
                     
                 </div>
@@ -793,16 +786,16 @@ console<span class="token punctuation">.</span><span class="token function">log<
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/12/js/shen-kao-bei/">
+                <a href="/2022/10/21/dom-chang-jian-de-cao-zuo-you-na-xie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="深拷贝">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="DOM常见的操作有哪些">
                         
-                        <span class="card-title">深拷贝</span>
+                        <span class="card-title">DOM常见的操作有哪些</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -813,7 +806,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-21
                             </span>
                         <span class="publish-author">
                             
@@ -827,7 +820,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     

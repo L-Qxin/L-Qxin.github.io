@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深拷贝, HTML,CSS,JavaScript,React,Vue.js等">
+    <meta name="keywords" content="Javascript本地存储的方式, HTML,CSS,JavaScript,React,Vue.js等">
     <meta name="description" content="专注于Web,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>深拷贝 | LQXin的私人博客</title>
+    <title>Javascript本地存储的方式 | LQXin的私人博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -205,12 +205,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深拷贝</h1>
+                    <h1 class="description center-align post-title">Javascript本地存储的方式</h1>
                 </div>
             </div>
         </div>
@@ -351,7 +351,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-12
+                    2022-10-21
                 </div>
                 
 
@@ -365,14 +365,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    753
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -387,127 +387,113 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、什么是深拷贝和浅拷贝"><a href="#一、什么是深拷贝和浅拷贝" class="headerlink" title="一、什么是深拷贝和浅拷贝"></a>一、什么是深拷贝和浅拷贝</h2><p>浅拷贝是创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是指向内存的地址 ，所以如果其中一个对象改变了这个引用类型的值，就会影响到另一个对象。<br>深拷贝是将一个对象从内存中完整的拷贝一份出来,从堆内存中开辟一个新的区域存放新对象,且修改新对象不会影响原对象。</p>
-<h2 id="二、实现深拷贝的五种方式"><a href="#二、实现深拷贝的五种方式" class="headerlink" title="二、实现深拷贝的五种方式"></a>二、实现深拷贝的五种方式</h2><h3 id="1、递归调用"><a href="#1、递归调用" class="headerlink" title="1、递归调用"></a>1、递归调用</h3><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 递归调用</span>
-<span class="token keyword">const</span> deepCopy <span class="token operator">=</span> <span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// 判断传入的值是否为一个对象</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> obj <span class="token operator">!==</span> <span class="token string">"object"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token comment" spellcheck="true">// 判断对象的类型 注意这里不考虑包装类对象</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"[object Date]"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"[object RegExp]"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"[object Undefined]"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token comment" spellcheck="true">// 判断对象是类</span>
-  <span class="token keyword">let</span> newObj <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>  <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">in</span> obj<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> obj<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        newObj<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>item<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
-        newObj<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">=</span> obj<span class="token punctuation">[</span>item<span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> newObj
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    info<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        age<span class="token punctuation">:</span> <span class="token number">24</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span>
-foo<span class="token punctuation">.</span>info<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span>
+                <h2 id="一、方式"><a href="#一、方式" class="headerlink" title="一、方式"></a>一、方式</h2><p><code>javaScript</code>本地缓存的方法我们主要讲述以下四种：</p>
+<ul>
+<li>cookie</li>
+<li>sessionStorage</li>
+<li>localStorage</li>
+<li>indexedDB</li>
+</ul>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p><code>Cookie</code>，类型为「小型文本文件」，指某些网站为了辨别用户身份而储存在用户本地终端上的数据。是为了解决 <code>HTTP</code>无状态导致的问题</p>
+<p>作为一段一般不超过 4KB 的小型文本数据，它由一个名称（Name）、一个值（Value）和其它几个用于控制 <code>cookie</code>有效期、安全性、使用范围的可选属性组成</p>
+<p>但是<code>cookie</code>在每次请求中都会被发送，如果不使用 <code>HTTPS</code>并对其加密，其保存的信息很容易被窃取，导致安全风险。举个例子，在一些使用 <code>cookie</code>保持登录态的网站上，如果 <code>cookie</code>被窃取，他人很容易利用你的 <code>cookie</code>来假扮成你登录网站</p>
+<p>关于<code>cookie</code>常用的属性如下：</p>
+<ul>
+<li>Expires 用于设置 Cookie 的过期时间</li>
+</ul>
+<pre class=" language-js"><code class="language-js">Expires<span class="token operator">=</span>Wed<span class="token punctuation">,</span> <span class="token number">21</span> Oct <span class="token number">2015</span> <span class="token number">07</span><span class="token punctuation">:</span><span class="token number">28</span><span class="token punctuation">:</span><span class="token number">00</span> GMT
 </code></pre>
-<h3 id="2、JSON-stringify-JSON-parse"><a href="#2、JSON-stringify-JSON-parse" class="headerlink" title="2、JSON.stringify + JSON.parse"></a>2、JSON.stringify + JSON.parse</h3><pre class=" language-js"><code class="language-js">JSON<span class="token punctuation">.</span>stringify
-情况一： 对象内不存在undefined、symbol、<span class="token keyword">function</span>类型的属性时
-<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    info<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        age<span class="token punctuation">:</span> <span class="token number">24</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// { name: '张三', info: { age: 24 } } { name: '张三', info: { age: 24 } }</span>
-foo<span class="token punctuation">.</span>info<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// { name: '张三', info: { age: 25 } } { name: '张三', info: { age: 24 } }</span>
-
-情况二：当对象内存在undefined、symbol、<span class="token keyword">function</span>类型的属性时，在序列化过程中会被忽略。
-当属性为<span class="token number">NaN</span> 和 <span class="token number">Infinity</span> 格式的数值及 <span class="token keyword">null</span> 都会被当做 nul
-<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token punctuation">:</span> <span class="token string">"张三"</span><span class="token punctuation">,</span>
-  age<span class="token punctuation">:</span> undefined<span class="token punctuation">,</span>
-  height<span class="token punctuation">:</span> <span class="token number">183</span><span class="token punctuation">,</span>
-  gender<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"男"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//</span>
-  say<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-  aa<span class="token punctuation">:</span> <span class="token number">NaN</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token comment" spellcheck="true">// {aa: NaN, age: undefined, gender: Symbol(男), height: null, name: "张三"} { {name: '张三', height: null, aa: null} }</span>
-
-JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 第二个参数为可选参数，可以是一个函数或者数组，
-当是数组时表示需要被转化的属性列表，但undeinfed<span class="token punctuation">,</span>symbol<span class="token punctuation">,</span><span class="token keyword">function</span>类型的属性依然会被忽略
-
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">,</span> <span class="token string">'gender'</span><span class="token punctuation">,</span> <span class="token string">'say'</span><span class="token punctuation">,</span> <span class="token string">'aa'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newFoo<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// {name: '张三', aa: null}</span>
+<ul>
+<li>Max-Age 用于设置在 Cookie 失效之前需要经过的秒数（优先级比<code>Expires</code>高）</li>
+</ul>
+<pre class=" language-js"><code class="language-js">Max<span class="token operator">-</span>Age<span class="token operator">=</span><span class="token number">604800</span>
 </code></pre>
-<h3 id="3、lodash"><a href="#3、lodash" class="headerlink" title="3、lodash"></a>3、lodash</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> _ <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash'</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    info<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        age<span class="token punctuation">:</span> <span class="token number">24</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">cloneDeep</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-foo<span class="token punctuation">.</span>info<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// { name: '张三', info: { age: 25 } } { name: '张三', info: { age: 24 } }</span>
+<ul>
+<li><code>Domain</code>指定了 <code>Cookie</code> 可以送达的主机名</li>
+<li><code>Path</code>指定了一个 <code>URL</code>路径，这个路径必须出现在要请求的资源的路径中才可以发送 <code>Cookie</code> 首部</li>
+</ul>
+<pre class=" language-js"><code class="language-js">Path<span class="token operator">=</span><span class="token operator">/</span>docs   # <span class="token operator">/</span>docs<span class="token operator">/</span>Web<span class="token operator">/</span> 下的资源会带 Cookie 首部
 </code></pre>
-<h3 id="4、Object-assgin"><a href="#4、Object-assgin" class="headerlink" title="4、Object.assgin"></a>4、Object.assgin</h3><p>注意：只有当对象中没有嵌套对象时，才可以实现深拷贝</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    age<span class="token punctuation">:</span> <span class="token number">24</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> foo<span class="token punctuation">)</span>
-foo<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// {name: '张三', age: 25} {name: '张三', age: 24}</span>
-
-<span class="token comment" spellcheck="true">// 对象中有内嵌的对象时</span>
-<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    info<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        age<span class="token punctuation">:</span> <span class="token number">24</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> foo<span class="token punctuation">)</span>
-foo<span class="token punctuation">.</span>info<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// { name: '张三', info: { age: 25 } } { name: '张三', info: { age: 25 } }</span>
+<ul>
+<li>标记为 <code>Secure</code>的 <code>Cookie</code>只应通过被<code>HTTPS</code>协议加密过的请求发送给服务端</li>
+</ul>
+<p>通过上述，我们可以看到<code>cookie</code>又开始的作用并不是为了缓存而设计出来，只是借用了<code>cookie</code>的特性实现缓存</p>
+<p>关于<code>cookie</code>的使用如下：</p>
+<pre class=" language-js"><code class="language-js">document<span class="token punctuation">.</span>cookie <span class="token operator">=</span> <span class="token string">'名字=值'</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="5、structuredClone"><a href="#5、structuredClone" class="headerlink" title="5、structuredClone"></a>5、structuredClone</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'张三'</span><span class="token punctuation">,</span>
-    info<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        age<span class="token punctuation">:</span> <span class="token number">24</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">const</span> newFoo <span class="token operator">=</span> <span class="token function">structuredClone</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// </span>
-foo<span class="token punctuation">.</span>info<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> newFoo<span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// { name: '张三', info: { age: 25 } } { name: '张三', info: { age: 24 } }</span>
+<p>关于<code>cookie</code>的修改，首先要确定<code>domain</code>和<code>path</code>属性都是相同的才可以，其中有一个不同得时候都会创建出一个新的<code>cookie</code></p>
+<pre class=" language-js"><code class="language-js">Set<span class="token operator">-</span>Cookie<span class="token punctuation">:</span>name<span class="token operator">=</span>aa<span class="token punctuation">;</span> domain<span class="token operator">=</span>aa<span class="token punctuation">.</span>net<span class="token punctuation">;</span> path<span class="token operator">=</span><span class="token operator">/</span>  # 服务端设置
+document<span class="token punctuation">.</span>cookie <span class="token operator">=</span>name<span class="token operator">=</span>bb<span class="token punctuation">;</span> domain<span class="token operator">=</span>aa<span class="token punctuation">.</span>net<span class="token punctuation">;</span> path<span class="token operator">=</span><span class="token operator">/</span>  # 客户端设置
 </code></pre>
-<p>该方法为Web最新的 API，存在兼容问题</p>
+<p>最后<code>cookie</code>的删除，最常用的方法就是给<code>cookie</code>设置一个过期的事件，这样<code>cookie</code>过期后会被浏览器删除</p>
+<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><p><code>HTML5</code>新方法，IE8及以上浏览器都兼容</p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>生命周期：持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的</li>
+<li>存储的信息在同一域中是共享的</li>
+<li>当本页操作（新增、修改、删除）了<code>localStorage</code>的时候，本页面不会触发<code>storage</code>事件,但是别的页面会触发<code>storage</code>事件。</li>
+<li>大小：5M（跟浏览器厂商有关系）</li>
+<li><code>localStorage</code>本质上是对字符串的读取，如果存储内容多的话会消耗内存空间，会导致页面变卡</li>
+<li>受同源策略的限制</li>
+</ul>
+<p>下面再看看关于<code>localStorage</code>的使用</p>
+<p>设置</p>
+<pre class=" language-js"><code class="language-js">localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'username'</span><span class="token punctuation">,</span><span class="token string">'cfangxu'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>获取</p>
+<pre class=" language-js"><code class="language-js">localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'username'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>获取键名</p>
+<pre class=" language-js"><code class="language-js">localStorage<span class="token punctuation">.</span><span class="token function">key</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//获取第一个键名</span>
+</code></pre>
+<p>删除</p>
+<pre class=" language-js"><code class="language-js">localStorage<span class="token punctuation">.</span><span class="token function">removeItem</span><span class="token punctuation">(</span><span class="token string">'username'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>一次性清除所有存储</p>
+<pre class=" language-js"><code class="language-js">localStorage<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p><code>localStorage</code> 也不是完美的，它有两个缺点：</p>
+<ul>
+<li>无法像<code>Cookie</code>一样设置过期时间</li>
+<li>只能存入字符串，无法直接存对象</li>
+</ul>
+<pre class=" language-js"><code class="language-js">localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'key'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span> <span class="token string">'value'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'key'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// '[object, Object]'</span>
+</code></pre>
+<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><p><code>sessionStorage</code>和 <code>localStorage</code>使用方法基本一致，唯一不同的是生命周期，一旦页面（会话）关闭，<code>sessionStorage</code> 将会删除数据</p>
+<h3 id="indexedDB-扩展的前端存储方式"><a href="#indexedDB-扩展的前端存储方式" class="headerlink" title="indexedDB 扩展的前端存储方式"></a>indexedDB 扩展的前端存储方式</h3><p><code>indexedDB</code>是一种低级API，用于客户端存储大量结构化数据(包括, 文件/ blobs)。该API使用索引来实现对该数据的高性能搜索</p>
+<p>虽然 <code>Web Storage</code>对于存储较少量的数据很有用，但对于存储更大量的结构化数据来说，这种方法不太有用。<code>IndexedDB</code>提供了一个解决方案</p>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><ul>
+<li>储存量理论上没有上限</li>
+<li>所有操作都是异步的，相比 <code>LocalStorage</code> 同步操作性能更高，尤其是数据量较大时</li>
+<li>原生支持储存<code>JS</code>的对象</li>
+<li>是个正经的数据库，意味着数据库能干的事它都能干</li>
+</ul>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><ul>
+<li>操作非常繁琐</li>
+<li>本身有一定门槛</li>
+</ul>
+<p>关于<code>indexedDB</code>的使用基本使用步骤如下：</p>
+<ul>
+<li>打开数据库并且开始一个事务</li>
+<li>创建一个 <code>object store</code></li>
+<li>构建一个请求来执行一些数据库操作，像增加或提取数据等。</li>
+<li>通过监听正确类型的 <code>DOM</code> 事件以等待操作完成。</li>
+<li>在操作结果上进行一些操作（可以在 <code>request</code>对象中找到）</li>
+</ul>
+<p>关于使用<code>indexdb</code>的使用会比较繁琐，大家可以通过使用<code>Godb.js</code>库进行缓存，最大化的降低操作难度</p>
+<h2 id="二、区别"><a href="#二、区别" class="headerlink" title="二、区别"></a>二、区别</h2><p>关于<code>cookie</code>、<code>sessionStorage</code>、<code>localStorage</code>三者的区别主要如下：</p>
+<ul>
+<li>存储大小：<code>cookie</code>数据大小不能超过<code>4k</code>，<code>sessionStorage</code>和<code>localStorage</code>虽然也有存储大小的限制，但比<code>cookie</code>大得多，可以达到5M或更大</li>
+<li>有效时间：<code>localStorage</code>存储持久数据，浏览器关闭后数据不丢失除非主动删除数据； <code>sessionStorage</code>数据在当前浏览器窗口关闭后自动删除；<code>cookie</code>设置的<code>cookie</code>过期时间之前一直有效，即使窗口或浏览器关闭</li>
+<li>数据与服务器之间的交互方式，<code>cookie</code>的数据会自动的传递到服务器，服务器端也可以写<code>cookie</code>到客户端； <code>sessionStorage</code>和<code>localStorage</code>不会自动把数据发给服务器，仅在本地保存</li>
+</ul>
+<h2 id="三、应用场景"><a href="#三、应用场景" class="headerlink" title="三、应用场景"></a>三、应用场景</h2><p>在了解了上述的前端的缓存方式后，我们可以看看针对不对场景的使用选择：</p>
+<ul>
+<li>标记用户与跟踪用户行为的情况，推荐使用<code>cookie</code></li>
+<li>适合长期保存在本地的数据（令牌），推荐使用<code>localStorage</code></li>
+<li>敏感账号一次性登录，推荐使用<code>sessionStorage</code></li>
+<li>存储大量数据的情况、在线文档（富文本编辑器）保存编辑历史的情况，推荐使用<code>indexedDB</code></li>
+</ul>
 
                 
             </div>
@@ -534,7 +520,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://L-Qxin.github.io/2019/08/12/js/shen-kao-bei/">http://L-Qxin.github.io/2019/08/12/js/shen-kao-bei/</a>
+                    <a href="http://L-Qxin.github.io/2022/10/21/javascript-ben-di-cun-chu-de-fang-shi/">http://L-Qxin.github.io/2022/10/21/javascript-ben-di-cun-chu-de-fang-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -743,66 +729,18 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/09/20/vue/vue3-zu-jian-jian-chuan-zhi/">
+                <a href="/2022/10/21/javascript-ben-di-cun-chu-de-fang-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="vue3组件间传值">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Javascript本地存储的方式">
                         
-                        <span class="card-title">vue3组件间传值</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="post-category">
-                                    前端框架
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/vue/">
-                        <span class="chip bg-color">vue</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/08/12/js/shen-kao-bei/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="深拷贝">
-                        
-                        <span class="card-title">深拷贝</span>
+                        <span class="card-title">Javascript本地存储的方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -813,7 +751,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-21
                             </span>
                         <span class="publish-author">
                             
@@ -828,6 +766,55 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/21/bom-dui-xiang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="BOM对象">
+                        
+                        <span class="card-title">BOM对象</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
                 
                 <div class="card-action article-tags">
                     
